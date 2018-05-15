@@ -1,0 +1,54 @@
+service: boardgamer
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-central-1
+#  stage: dev
+  environment:
+    TABLE_NAME:
+      Ref: Database
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:PutItem'
+        - 'dynamodb:Scan'
+      Resource:
+        Fn::GetAtt: [Database, Arn]
+plugins:
+  - serverless-webpack
+custom:
+  webpack:
+    packager: yarn
+
+
+functions:
+  listGames:
+    handler: src/games.list
+    events:
+      - http:
+          path: games
+          method: GET
+          cors: true
+
+  postGame:
+    handler: src/games.post
+    events:
+      - http:
+          path: games
+          method: POST
+          cors: true
+
+resources:
+  Resources:
+    Database:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

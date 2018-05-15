@@ -1,0 +1,13 @@
+{
+  "name": "boardgamer-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Pauli Perälä",
+  "license": "MIT",
+  "dependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "eslint-loader": "^2.0.0",
+    "serverless-webpack": "^5.1.5"
+  }
+}

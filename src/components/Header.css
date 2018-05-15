@@ -1,0 +1,52 @@
+
+.App-header {
+  background-color: white;
+  color: black;
+  box-shadow: 0 .1em .6em .2em gray;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.App-title {
+  font-size: 1.5em;
+  padding-left: 2em;
+}
+
+.App-navigation {
+  background-color: #BBC7A4;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.App-navigation > li {
+  list-style: none;
+  transition: background-color .2s ease-in-out;
+}
+
+.App-navigation a {
+  text-decoration: none;
+  color: black;
+  transition: color .2s ease-in-out;
+}
+
+.App-navigation > li:hover {
+  background-color: #2C363F;
+}
+
+.App-navigation > li:hover a {
+  color: white;
+}
+
+.App-navigation > li > a {
+  display: inline-block;
+  padding: 1em;
+}
+
+.App-navigation .current {
+  cursor: default;
+  color: white;
+  background-color: #416788;
+}
